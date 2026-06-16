@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pandanus Kiosk - FIFA World Cup 2026 Perfect Center</title>
+    <title>Pandanus Kiosk - FIFA World Cup 2026 Absolute Center</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* Scrollbar සහ Default Margin සම්පූර්ණයෙන්ම ඉවත් කිරීම */
+        /* සියලුම Scrollbars සහ අනවශ්‍ය පරතරයන් ඉවත් කිරීම */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; cursor: none; -ms-overflow-style: none; scrollbar-width: none; }
         *::-webkit-scrollbar { display: none; }
         
@@ -37,32 +37,35 @@
             pointer-events: none;
         }
 
-        /* --- Global Container (තිරය කුමක් වුවත් මැදින් එකම සීමාවක තැබීමට) --- */
+        /* --- Global Container (තිරය පුරා සියල්ල මැදින් තබා ගැනීමට) --- */
         .kiosk-container {
             width: 100%;
-            max-width: 1100px; /* සියල්ලම දෙපැත්තට නොගොස් මැද තබා ගන්නා සීමාව */
+            max-width: 1000px; /* දෙපැත්තට විසිරී යාම වළක්වන ප්‍රධාන සීමාව */
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            align-items: center;
-            padding: 30px 20px;
+            align-items: center; /* සියල්ල තිරස්ව මැදට ගැනීම (Horizontal Centering) */
+            padding: 35px 20px;
         }
 
-        /* --- Header Section --- */
+        /* --- Header Section (තිරයේ හරියටම මැදට) --- */
         .header {
             width: 100%;
-            text-align: center;
+            text-align: center; /* ටෙක්ස්ට් එක මැදට කිරීමට */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .hotel-name {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             letter-spacing: 5px;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.5);
         }
         .kiosk-title {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 900;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -78,11 +81,11 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 20px; /* කොටස් අතර නිවැරදි පරතරය ස්ථිරව තැබීමට */
+            gap: 20px; 
             align-items: center;
             justify-content: center;
             flex-grow: 1;
-            margin: 15px 0;
+            margin: 10px 0;
         }
 
         /* FEATURED / LIVE MATCH BOX */
@@ -125,7 +128,7 @@
 
         @keyframes blink {
             0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(0.98); }
+            50% { opacity: 0.4; transform: scale(0.98); }
         }
 
         .match-row {
@@ -133,7 +136,7 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            padding: 0 40px;
+            padding: 0 50px;
         }
 
         .team-box {
@@ -172,7 +175,7 @@
         }
 
         .match-status {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255,255,255,0.1);
@@ -291,13 +294,16 @@
             font-weight: 800;
         }
 
-        /* --- Kiosk Footer Clock --- */
+        /* --- Kiosk Footer Clock (තිරයේ හරියටම මැදට) --- */
         .kiosk-footer {
             width: 100%;
-            text-align: center;
+            text-align: center; /* ඔරලෝසුව සහ දිනය මැදට කිරීමට */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         #clock {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             font-weight: 800;
             letter-spacing: -1px;
             line-height: 1;
@@ -319,16 +325,21 @@
     <div class="bg-fullscreen"></div>
     <div class="vignette"></div>
 
+    <!-- කන්ටේනරය මඟින් සියලුම දත්ත මැදින් පමණක් රඳවා ගනියි -->
     <div class="kiosk-container">
         
+        <!-- HEADER (Centered) -->
         <div class="header">
             <div class="hotel-name">PANDANUS BEACH Resort & Spa</div>
             <div class="kiosk-title">FIFA World Cup 2026</div>
         </div>
 
+        <!-- MAIN LAYOUT ELEMENTS -->
         <div class="main-content">
+            <!-- FEATURED MATCH BOX -->
             <div class="featured-match-box" id="featuredMatchBox"></div>
 
+            <!-- TIMETABLE BOX -->
             <div class="advice-container">
                 <div class="advice-card">
                     <div class="adv-title" id="listTitle">Match Timetable</div>
@@ -336,6 +347,7 @@
                 </div>
             </div>
 
+            <!-- THEPAPARE TV BOX -->
             <div class="broadcast-container">
                 <div class="broadcast-card">
                     <div class="channel-info">
@@ -354,6 +366,7 @@
             </div>
         </div>
 
+        <!-- FOOTER CLOCK (Centered) -->
         <div class="kiosk-footer">
             <div id="clock">00:00:00</div>
             <div id="date">--</div>
@@ -443,4 +456,13 @@
         function updateTime() {
             const now = new Date();
             document.getElementById('clock').innerText = now.toLocaleTimeString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            document.getElementById('date').innerText = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }).
+            document.getElementById('date').innerText = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }).toUpperCase();
+            if (now.getSeconds() === 0) processKioskDisplay();
+        }
+
+        updateTime();
+        processKioskDisplay();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
