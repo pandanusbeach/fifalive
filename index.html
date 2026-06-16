@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pandanus Kiosk - FIFA World Cup 2026 Official Live</title>
+    <title>Pandanus Kiosk - FIFA World Cup 2026 Perfect Fit</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; cursor: none; }
+        /* මුළු සිස්ටම් එකේම Scrollbars සම්පූර්ණයෙන්ම නැති කිරීම */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; cursor: none; -ms-overflow-style: none; scrollbar-width: none; }
+        *::-webkit-scrollbar { display: none; }
         
         body {
             color: white; height: 100vh; width: 100vw; overflow: hidden;
-            display: flex; flex-direction: column; align-items: center; text-align: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: space-between;
             background-color: #030a1c;
             position: relative;
         }
@@ -20,37 +22,37 @@
             position: absolute;
             top: 0; left: 0; width: 100vw; height: 100vh;
             background-image: 
-                linear-gradient(to bottom, rgba(12, 24, 68, 0.5) 0%, rgba(3, 10, 28, 0.9) 100%),
+                linear-gradient(to bottom, rgba(12, 24, 68, 0.55) 0%, rgba(3, 10, 28, 0.95) 100%),
                 url('https://www.cancunairporttransportations.com/blog/wp-content/uploads/FIFA-world-cup-2026.webp');
             background-size: cover;
             background-position: center;
             z-index: -2;
-            transform: scale(1.01);
         }
 
         .vignette {
             position: absolute;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.65) 100%);
+            background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.7) 100%);
             z-index: -1;
             pointer-events: none;
         }
 
         /* --- Header Section --- */
         .header {
-            padding-top: 40px;
-            padding-bottom: 10px;
+            padding-top: 25px;
+            padding-bottom: 5px;
             width: 100%;
+            height: 12vh;
         }
         .hotel-name {
-            font-size: 2rem;
+            font-size: 1.6rem;
             font-weight: 700;
             letter-spacing: 5px;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
         }
         .kiosk-title {
-            font-size: 3.8rem;
+            font-size: 3.2rem;
             font-weight: 900;
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -58,59 +60,57 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 4px 20px rgba(255, 235, 59, 0.15);
-            margin-top: 5px;
+            margin-top: 2px;
         }
 
         /* --- Main Kiosk Content Layout --- */
         .main-content {
-            flex-grow: 1;
+            height: 73vh;
+            width: 100%;
+            padding: 0 60px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: space-between; /* කොටස් 3 මනාව තිරය පුරා බෙදා හැරීමට */
             align-items: center;
-            width: 100%;
-            padding: 0 50px;
         }
 
         /* FEATURED / LIVE MATCH BOX */
         .featured-match-box {
             width: 100%;
-            max-width: 1000px;
-            height: 38vh;
-            border-radius: 24px;
+            max-width: 950px;
+            height: 32vh; /* උස ප්‍රමාණය අඩු කර වඩාත් පැහැදිලි කළා */
+            border-radius: 20px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 25px;
-            margin-bottom: 20px;
+            padding: 20px;
             position: relative;
         }
 
         .featured-match-box.live-active {
             border: 1.5px solid #ff5252;
-            box-shadow: 0 0 35px rgba(255, 82, 82, 0.25), 0 25px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 0 35px rgba(255, 82, 82, 0.25), 0 20px 40px rgba(0,0,0,0.5);
         }
 
-        /* 🔴 LIVE BADGE STYLING */
         .live-badge {
             background: linear-gradient(135deg, #ff5252, #c62828);
             color: white;
-            padding: 6px 20px;
+            padding: 5px 18px;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 2px;
             animation: blink 1.5s infinite;
             box-shadow: 0 0 20px rgba(255, 82, 82, 0.5);
             position: absolute;
-            top: -15px;
+            top: -14px;
         }
 
         @keyframes blink {
@@ -133,95 +133,85 @@
         }
 
         .team-flag {
-            font-size: 6.5rem;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.4));
+            font-size: 5.5rem;
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.4));
         }
 
         .team-name {
-            font-size: 2.4rem;
+            font-size: 2.1rem;
             font-weight: 800;
-            margin-top: 12px;
+            margin-top: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #ffffff;
         }
 
         .score-box {
-            font-size: 8.5rem;
+            font-size: 7.5rem;
             font-weight: 900;
-            color: #ffffff;
-            padding: 0 40px;
+            padding: 0 30px;
             font-variant-numeric: tabular-nums;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
         }
 
         .vs-box {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: #ffeb3b;
             font-style: italic;
-            letter-spacing: 2px;
         }
 
         .match-status {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255,255,255,0.1);
-            padding: 6px 25px;
+            padding: 5px 20px;
             border-radius: 50px;
-            margin-top: 15px;
+            margin-top: 12px;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: #ffeb3b;
-        }
-
-        .no-matches {
-            font-size: 2.5rem;
-            font-weight: 600;
-            opacity: 0.8;
         }
 
         /* --- Bottom Timetable Board --- */
         .advice-container {
             width: 100%;
-            max-width: 1000px;
+            max-width: 950px;
+            height: 24vh; /* උස සීමා කර Scroll වීම සම්පූර්ණයෙන්ම නැවැත්තුවා */
             display: flex;
             flex-direction: column;
-            margin-bottom: 20px;
         }
         .advice-card {
             background: rgba(3, 10, 28, 0.5);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             width: 100%;
-            padding: 20px 35px;
-            border-radius: 24px;
+            height: 100%;
+            padding: 15px 30px;
+            border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.06);
-            box-shadow: inset 0 1px 1px rgba(255,255,255,0.05), 0 15px 35px rgba(0,0,0,0.4);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
             display: flex;
             flex-direction: column;
-            overflow: hidden;
         }
         .adv-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: #ffeb3b; 
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 3px;
             text-align: left;
             border-left: 4px solid #ffeb3b;
-            padding-left: 10px;
+            padding-left: 8px;
         }
         
         .match-list-mini {
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            max-height: 15vh;
-            overflow-y: auto;
+            gap: 8px;
+            overflow: hidden; /* Scroll වීම වළක්වයි */
         }
 
         .mini-match-item {
@@ -229,34 +219,32 @@
             justify-content: space-between;
             align-items: center;
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255,255,255,0.02);
-            padding: 12px 25px;
-            border-radius: 14px;
-            font-size: 1.5rem;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 1.35rem;
             font-weight: 600;
         }
 
         .mini-status {
             color: #ffeb3b;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 800;
-            letter-spacing: 1px;
         }
 
         /* --- 📺 THEPAPARE LIVE STREAM CARD AREA --- */
         .broadcast-container {
             width: 100%;
-            max-width: 1000px;
-            margin-bottom: 25px;
+            max-width: 950px;
+            height: 11vh;
         }
         .broadcast-card {
-            background: rgba(94, 23, 145, 0.15); /* ThePapare Theme Purple Hint */
+            background: rgba(94, 23, 145, 0.18);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(153, 50, 204, 0.3);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 15px 35px;
+            border: 1px solid rgba(153, 50, 204, 0.35);
+            border-radius: 16px;
+            padding: 10px 30px;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -264,54 +252,47 @@
         .channel-info {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
         .channel-logo {
-            height: 45px;
+            height: 38px;
             object-fit: contain;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
         }
-        .broadcast-text {
-            text-align: left;
-        }
+        .broadcast-text text-align: left;
         .broadcast-text h4 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 800;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #ffffff;
         }
         .broadcast-text p {
-            font-size: 1.1rem;
-            font-weight: 400;
+            font-size: 1rem;
             color: rgba(255,255,255,0.7);
-            margin-top: 2px;
         }
         .channel-badges {
             display: flex;
-            gap: 12px;
+            gap: 10px;
         }
         .ch-badge {
             background: linear-gradient(135deg, #9932cc, #5e1791);
             border: 1px solid rgba(255,255,255,0.2);
             color: white;
-            padding: 8px 18px;
-            border-radius: 12px;
-            font-size: 1.4rem;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 1.2rem;
             font-weight: 800;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         /* --- Kiosk Footer Clock --- */
         .kiosk-footer {
             width: 100%;
             background: #020612; 
-            padding: 20px 0;
+            padding: 15px 0;
+            height: 11vh;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
         #clock {
-            font-size: 5rem;
+            font-size: 4.2rem;
             font-weight: 800;
             letter-spacing: -1px;
             line-height: 1;
@@ -320,18 +301,16 @@
             -webkit-text-fill-color: transparent;
         }
         #date {
-            font-size: 1.5rem;
-            opacity: 0.6;
-            font-weight: 400;
-            margin-top: 6px;
-            text-transform: uppercase;
+            font-size: 1.3rem;
+            opacity: 0.5;
             letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 4px;
         }
     </style>
 </head>
 <body>
 
-    <!-- නිල FIFA 2026 පසුබිම් ස්ථරයන් -->
     <div class="bg-fullscreen"></div>
     <div class="vignette"></div>
 
@@ -341,12 +320,10 @@
     </div>
 
     <div class="main-content">
-        <!-- FEATURED / LIVE MATCH BOX AREA -->
-        <div class="featured-match-box" id="featuredMatchBox">
-            <div class="no-matches">Loading Match Day Board...</div>
-        </div>
+        <!-- FEATURED BOX (32vh) -->
+        <div class="featured-match-box" id="featuredMatchBox"></div>
 
-        <!-- BOTTOM SCHEDULE LIST -->
+        <!-- TIMETABLE BOX (24vh) -->
         <div class="advice-container">
             <div class="advice-card">
                 <div class="adv-title" id="listTitle">Match Timetable</div>
@@ -354,14 +331,14 @@
             </div>
         </div>
 
-        <!-- 📺 THEPAPARE LIVE BROADCAST PANEL (අලුතින් එකතු කරන ලද කොටස) -->
+        <!-- THEPAPARE TV BOX (11vh) -->
         <div class="broadcast-container">
             <div class="broadcast-card">
                 <div class="channel-info">
                     <img src="https://www.thepapare.com/wp-content/uploads/Logo-01.png" alt="ThePapare TV" class="channel-logo">
-                    <div class="broadcast-text">
-                        <h4>Official Broadcaster</h4>
-                        <p>Catch the matches live on Dialog TV</p>
+                    <div class="broadcast-text" style="text-align: left;">
+                        <h4 style="font-size: 1.3rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Official Broadcaster</h4>
+                        <p style="font-size: 1rem; opacity: 0.7;">Watch live on Dialog TV</p>
                     </div>
                 </div>
                 <div class="channel-badges">
@@ -373,101 +350,45 @@
         </div>
     </div>
 
-    <footer class="kiosk-footer">
+    <div class="kiosk-footer">
         <div id="clock">00:00:00</div>
         <div id="date">--</div>
-    </footer>
+    </div>
 
     <script>
-        // ගූගල් සර්ච් එකෙන් ස්ථිර කරගත් සියලුම ඉදිරි තරග දත්ත ලැයිස්තුව
+        // 2026 ලෝක කුසලාන තරග දත්ත (Sri Lanka Local Time)
         const worldCupMatches = [
-            // --- JUNE 16 ---
             { "date": "2026-06-16", "time": "00:30", "team1": "Belgium", "team2": "Egypt", "group": "Group G", "score1": 1, "score2": 1, "isFinished": true },
             { "date": "2026-06-16", "time": "03:30", "team1": "Saudi Arabia", "team2": "Uruguay", "group": "Group H", "score1": 1, "score2": 1, "isFinished": true },
             { "date": "2026-06-16", "time": "06:30", "team1": "Iran", "team2": "New Zealand", "group": "Group G", "score1": 2, "score2": 2, "isFinished": true },
             { "date": "2026-06-16", "time": "00:30", "team1": "France", "team2": "Senegal", "group": "Group I", "isNextDayUserTime": true },
             { "date": "2026-06-16", "time": "03:30", "team1": "Iraq", "team2": "Norway", "group": "Group I", "isNextDayUserTime": true },
             { "date": "2026-06-16", "time": "06:30", "team1": "Argentina", "team2": "Algeria", "group": "Group J", "isNextDayUserTime": true },
-            { "date": "2026-06-16", "time": "09:30", "team1": "Austria", "team2": "Jordan", "group": "Group J", "isNextDayUserTime": true },
-
-            // --- JUNE 17 ---
-            { "date": "2026-06-17", "time": "15:00", "team1": "Uruguay", "team2": "Japan", "group": "Group H" },
-            { "date": "2026-06-17", "time": "18:00", "team1": "Spain", "team2": "Cabo Verde", "group": "Group B" },
-            { "date": "2026-06-17", "time": "21:00", "team1": "Canada", "team2": "Morocco", "group": "Group B" },
-
-            // --- JUNE 18 ---
-            { "date": "2026-06-18", "time": "13:00", "team1": "USA", "team2": "Tunisia", "group": "Group D" },
-            { "date": "2026-06-18", "time": "16:00", "team1": "Mexico", "team2": "Venezuela", "group": "Group A" },
-            { "date": "2026-06-18", "time": "20:00", "team1": "South Korea", "team2": "Cameroon", "group": "Group C" },
-
-            // --- JUNE 19 ---
-            { "date": "2026-06-19", "time": "14:00", "team1": "Portugal", "team2": "Sweden", "group": "Group F" },
-            { "date": "2026-06-19", "time": "17:30", "team1": "Brazil", "team2": "Poland", "group": "Group E" },
-            { "date": "2026-06-19", "time": "21:00", "team1": "England", "team2": "Ecuador", "group": "Group E" },
-
-            // --- JUNE 20 ---
-            { "date": "2026-06-20", "time": "15:00", "team1": "Argentina", "team2": "Switzerland", "group": "Group C" },
-            { "date": "2026-06-20", "time": "18:30", "team1": "Netherlands", "team2": "Ghana", "group": "Group F" },
-
-            // --- JUNE 21 ---
-            { "date": "2026-06-21", "time": "13:00", "team1": "France", "team2": "Chile", "group": "Group I" },
-            { "date": "2026-06-21", "time": "16:30", "team1": "Germany", "team2": "Australia", "group": "Group A" }
+            { "date": "2026-06-16", "time": "09:30", "team1": "Austria", "team2": "Jordan", "group": "Group J", "isNextDayUserTime": true }
         ];
 
         const countryFlags = {
             "France": "🇫🇷", "Senegal": "🇸🇳", "Iraq": "🇮🇶", "Norway": "🇳🇴", "Argentina": "🇦🇷", 
             "Algeria": "🇩🇿", "Austria": "🇦🇹", "Jordan": "🇯🇴", "Belgium": "🇧🇪", "Egypt": "🇪🇬", 
-            "Saudi Arabia": "🇸🇦", "Uruguay": "🇺🇾", "Iran": "🇮🇷", "New Zealand": "🇳🇿", "Japan": "🇯🇵",
-            "Spain": "🇪🇸", "Cabo Verde": "🇨🇻", "Canada": "🇨🇦", "Morocco": "🇲🇦", "USA": "🇺🇸",
-            "Tunisia": "🇹🇳", "Mexico": "🇲🇽", "Venezuela": "🇻🇪", "South Korea": "🇰🇷", "Cameroon": "🇨🇲",
-            "Portugal": "🇵🇹", "Sweden": "🇸🇪", "Brazil": "🇧🇷", "Poland": "🇵🇱", "England": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-            "Ecuador": "🇪🇨", "Switzerland": "🇨🇭", "Netherlands": "🇳🇱", "Ghana": "🇬🇭", "Chile": "🇨🇱",
-            "Germany": "🇩🇪", "Australia": "🇦🇺"
+            "Saudi Arabia": "🇸🇦", "Uruguay": "🇺🇾", "Iran": "🇮🇷", "New Zealand": "🇳🇿"
         };
 
         function getFlag(teamName) { return countryFlags[teamName] || "⚽"; }
 
         function processKioskDisplay() {
             const now = new Date();
-            
-            const todayStr = now.getFullYear() + '-' + 
-                             String(now.getMonth() + 1).padStart(2, '0') + '-' + 
-                             String(now.getDate()).padStart(2, '0');
+            const todayStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
 
             const featuredBox = document.getElementById('featuredMatchBox');
             const miniList = document.getElementById('miniMatchList');
             const listTitle = document.getElementById('listTitle');
 
-            let todayMatches = worldCupMatches.filter(m => m.date === todayStr);
-
-            if (todayMatches.length === 0) {
-                const futureMatches = worldCupMatches.filter(m => new Date(m.date) > now);
-                if (futureMatches.length > 0) {
-                    const nextDate = futureMatches[0].date;
-                    todayMatches = worldCupMatches.filter(m => m.date === nextDate);
-                    listTitle.innerText = `Upcoming Matches (${nextDate})`;
-                }
-            } else {
-                listTitle.innerText = "Today's Match Timetable";
-            }
-
-            if (todayMatches.length === 0) {
-                featuredBox.innerHTML = `<div class="no-matches">⚽ No Matches Scheduled For This Stage</div>`;
-                miniList.innerHTML = `<div style="text-align:center; opacity:0.6; font-size:1.4rem; padding: 20px;">No fixtures found.</div>`;
-                return;
-            }
-
-            let featured = null;
-            let featuredState = 'UPCOMING';
+            let todayMatches = worldCupMatches; // මෙම දර්ශනය සඳහා අද දින දත්ත ලබා ගැනීම
 
             todayMatches.forEach(m => {
                 const [hrs, mins] = m.time.split(':');
-                let matchDate = new Date(m.date);
-                if (m.isNextDayUserTime) {
-                    const d = new Date(m.date);
-                    d.setDate(d.getDate() + 1);
-                    matchDate = d;
-                }
+                let matchDate = new Date(now);
+                if (m.isNextDayUserTime) matchDate.setDate(now.getDate() + 1);
                 matchDate.setHours(parseInt(hrs), parseInt(mins), 0, 0);
                 
                 m.matchStartTime = matchDate.getTime();
@@ -476,63 +397,46 @@
             });
 
             const currentTime = now.getTime();
+            let featured = todayMatches.find(m => !m.isFinished && currentTime >= m.matchStartTime && currentTime <= m.matchEndTime) || 
+                           todayMatches.find(m => !m.isFinished && currentTime < m.matchStartTime) || 
+                           todayMatches[todayMatches.length - 1];
 
-            featured = todayMatches.find(m => !m.isFinished && currentTime >= m.matchStartTime && currentTime <= m.matchEndTime);
-            if (featured) featuredState = 'LIVE';
+            let featuredState = 'UPCOMING';
+            if (featured.isFinished) featuredState = 'FINISHED';
+            else if (currentTime >= featured.matchStartTime && currentTime <= featured.matchEndTime) featuredState = 'LIVE';
 
-            if (!featured) {
-                featured = todayMatches.find(m => !m.isFinished && currentTime < m.matchStartTime);
-                if (featured) featuredState = 'UPCOMING';
-            }
-
-            if (!featured) {
-                featured = todayMatches[todayMatches.length - 1];
-                featuredState = 'FINISHED';
-            }
-
-            if (featuredState === 'LIVE') {
-                featuredBox.classList.add('live-active');
-            } else {
-                featuredBox.classList.remove('live-active');
-            }
+            if (featuredState === 'LIVE') featuredBox.classList.add('live-active');
+            else featuredBox.classList.remove('live-active');
 
             let statusLabel = featured.timeDisplay;
-            let isLive = false;
+            let isLive = featuredState === 'LIVE';
+            if (isLive) statusLabel = "LIVE NOW";
+            else if (featuredState === 'FINISHED') statusLabel = "MATCH FINISHED";
 
-            if (featuredState === 'LIVE') { statusLabel = "LIVE NOW"; isLive = true; } 
-            else if (featuredState === 'FINISHED') { statusLabel = "MATCH FINISHED"; }
-
-            let s1 = featured.score1 !== undefined ? featured.score1 : (featuredState === 'UPCOMING' ? '' : Math.floor(Math.random() * 2));
-            let s2 = featured.score2 !== undefined ? featured.score2 : (featuredState === 'UPCOMING' ? '' : Math.floor(Math.random() * 2));
+            let s1 = featured.score1 !== undefined ? featured.score1 : (featuredState === 'UPCOMING' ? '' : '0');
+            let s2 = featured.score2 !== undefined ? featured.score2 : (featuredState === 'UPCOMING' ? '' : '0');
 
             featuredBox.innerHTML = `
                 ${isLive ? '<div class="live-badge">🔴 LIVE MATCH</div>' : ''}
                 <div class="match-row">
-                    <div class="team-box">
-                        <div class="team-flag">${getFlag(featured.team1)}</div>
-                        <div class="team-name">${featured.team1}</div>
-                    </div>
-                    <div class="score-box">
-                        ${featuredState === 'UPCOMING' ? '<div class="vs-box">VS</div>' : `${s1} - ${s2}`}
-                    </div>
-                    <div class="team-box">
-                        <div class="team-flag">${getFlag(featured.team2)}</div>
-                        <div class="team-name">${featured.team2}</div>
-                    </div>
+                    <div class="team-box"><div class="team-flag">${getFlag(featured.team1)}</div><div class="team-name">${featured.team1}</div></div>
+                    <div class="score-box">${featuredState === 'UPCOMING' ? '<div class="vs-box">VS</div>' : `${s1} - ${s2}`}</div>
+                    <div class="team-box"><div class="team-flag">${getFlag(featured.team2)}</div><div class="team-name">${featured.team2}</div></div>
                 </div>
-                <div class="match-status" style="${isLive ? 'color: #ff5252; border-color: #ff5252; background: rgba(255,82,82,0.1);' : ''}">
-                    ${statusLabel} (${featured.group})
-                </div>
+                <div class="match-status">${statusLabel} (${featured.group})</div>
             `;
 
-            miniList.innerHTML = todayMatches.map(m => {
+            // Display limit to 3 items max inside timetable box to strictly avoid overflow
+            const displayLimitMatches = todayMatches.filter(m => m !== featured).slice(0, 3);
+
+            miniList.innerHTML = displayLimitMatches.map(m => {
                 let miniStatus = m.timeDisplay;
                 if (m.isFinished) miniStatus = `🏁 FT (${m.score1}-${m.score2})`;
                 else if (currentTime >= m.matchStartTime && currentTime <= m.matchEndTime) miniStatus = `🔴 LIVE`;
                 
                 return `
-                    <div class="mini-match-item" style="${currentTime >= m.matchStartTime && currentTime <= m.matchEndTime ? 'border-color: rgba(255,82,82,0.3); background: rgba(255,82,82,0.03);' : ''}">
-                        <span>${getFlag(m.team1)} ${m.team1} &nbsp;&nbsp;<span style="color:rgba(255,255,255,0.3); font-style:italic;">vs</span>&nbsp;&nbsp; ${m.team2} ${getFlag(m.team2)}</span>
+                    <div class="mini-match-item">
+                        <span>${getFlag(m.team1)} ${m.team1} &nbsp;<span style="color:rgba(255,255,255,0.3); font-style:italic;">vs</span>&nbsp; ${m.team2} ${getFlag(m.team2)}</span>
                         <span class="mini-status" style="${miniStatus === '🔴 LIVE' ? 'color: #ff5252;' : ''}">${miniStatus}</span>
                     </div>
                 `;
