@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pandanus Kiosk - FIFA World Cup 2026 Absolute Center</title>
+    <title>Pandanus Kiosk - FIFA World Cup 2026 Ultimate Center</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* සියලුම Scrollbars සහ අනවශ්‍ය පරතරයන් ඉවත් කිරීම */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; cursor: none; -ms-overflow-style: none; scrollbar-width: none; }
         *::-webkit-scrollbar { display: none; }
         
@@ -17,7 +16,6 @@
             position: relative;
         }
 
-        /* --- Official FIFA World Cup 2026 Background Image Area --- */
         .bg-fullscreen {
             position: absolute;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -37,22 +35,20 @@
             pointer-events: none;
         }
 
-        /* --- Global Container (තිරය පුරා සියල්ල මැදින් තබා ගැනීමට) --- */
         .kiosk-container {
             width: 100%;
-            max-width: 1000px; /* දෙපැත්තට විසිරී යාම වළක්වන ප්‍රධාන සීමාව */
+            max-width: 1000px;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            align-items: center; /* සියල්ල තිරස්ව මැදට ගැනීම (Horizontal Centering) */
+            align-items: center;
             padding: 35px 20px;
         }
 
-        /* --- Header Section (තිරයේ හරියටම මැදට) --- */
         .header {
             width: 100%;
-            text-align: center; /* ටෙක්ස්ට් එක මැදට කිරීමට */
+            text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -76,7 +72,6 @@
             margin-top: 2px;
         }
 
-        /* --- Main Content Layout --- */
         .main-content {
             width: 100%;
             display: flex;
@@ -88,7 +83,6 @@
             margin: 10px 0;
         }
 
-        /* FEATURED / LIVE MATCH BOX */
         .featured-match-box {
             width: 100%;
             height: 28vh; 
@@ -159,12 +153,20 @@
             letter-spacing: 1px;
         }
 
+        .center-score-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 220px;
+        }
+
         .score-box {
             font-size: 6.5rem;
             font-weight: 900;
-            padding: 0 20px;
             font-variant-numeric: tabular-nums;
             text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            line-height: 1;
         }
 
         .vs-box {
@@ -174,6 +176,14 @@
             font-style: italic;
         }
 
+        .match-time-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffeb3b;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
         .match-status {
             font-size: 1.1rem;
             font-weight: 700;
@@ -181,10 +191,10 @@
             border: 1px solid rgba(255,255,255,0.1);
             padding: 5px 18px;
             border-radius: 50px;
-            margin-top: 10px;
+            margin-top: 15px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #ffeb3b;
+            color: #ffffff;
         }
 
         /* --- Timetable Board --- */
@@ -224,7 +234,7 @@
             display: flex;
             flex-direction: column;
             gap: 6px;
-            overflow: hidden;
+            overflow-y: auto;
         }
 
         .mini-match-item {
@@ -294,10 +304,9 @@
             font-weight: 800;
         }
 
-        /* --- Kiosk Footer Clock (තිරයේ හරියටම මැදට) --- */
         .kiosk-footer {
             width: 100%;
-            text-align: center; /* ඔරලෝසුව සහ දිනය මැදට කිරීමට */
+            text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -325,21 +334,16 @@
     <div class="bg-fullscreen"></div>
     <div class="vignette"></div>
 
-    <!-- කන්ටේනරය මඟින් සියලුම දත්ත මැදින් පමණක් රඳවා ගනියි -->
     <div class="kiosk-container">
         
-        <!-- HEADER (Centered) -->
         <div class="header">
             <div class="hotel-name">PANDANUS BEACH Resort & Spa</div>
             <div class="kiosk-title">FIFA World Cup 2026</div>
         </div>
 
-        <!-- MAIN LAYOUT ELEMENTS -->
         <div class="main-content">
-            <!-- FEATURED MATCH BOX -->
             <div class="featured-match-box" id="featuredMatchBox"></div>
 
-            <!-- TIMETABLE BOX -->
             <div class="advice-container">
                 <div class="advice-card">
                     <div class="adv-title" id="listTitle">Match Timetable</div>
@@ -347,7 +351,6 @@
                 </div>
             </div>
 
-            <!-- THEPAPARE TV BOX -->
             <div class="broadcast-container">
                 <div class="broadcast-card">
                     <div class="channel-info">
@@ -366,7 +369,6 @@
             </div>
         </div>
 
-        <!-- FOOTER CLOCK (Centered) -->
         <div class="kiosk-footer">
             <div id="clock">00:00:00</div>
             <div id="date">--</div>
@@ -405,10 +407,14 @@
                 matchDate.setHours(parseInt(hrs), parseInt(mins), 0, 0);
                 m.matchStartTime = matchDate.getTime();
                 m.matchEndTime = m.matchStartTime + (2 * 60 * 60 * 1000);
+                
+                // වෙලාව පෙන්වන ආකෘතිය (Format) සකස් කිරීම
                 m.timeDisplay = hrs + ":" + mins + (m.isNextDayUserTime ? " (Tomorrow)" : " (Tonight)");
             });
 
             const currentTime = now.getTime();
+            
+            // දැනට සජීවීව යන හෝ ඊළඟට පැවැත්වීමට නියමිත ප්‍රධාන තරගය තෝරා ගැනීම
             let featured = worldCupMatches.find(m => !m.isFinished && currentTime >= m.matchStartTime && currentTime <= m.matchEndTime) || 
                            worldCupMatches.find(m => !m.isFinished && currentTime < m.matchStartTime) || 
                            worldCupMatches[worldCupMatches.length - 1];
@@ -420,30 +426,50 @@
             if (featuredState === 'LIVE') featuredBox.classList.add('live-active');
             else featuredBox.classList.remove('live-active');
 
-            let statusLabel = featured.timeDisplay;
             let isLive = featuredState === 'LIVE';
-            if (isLive) statusLabel = "LIVE NOW";
-            else if (featuredState === 'FINISHED') statusLabel = "MATCH FINISHED";
-
             let s1 = featured.score1 !== undefined ? featured.score1 : (featuredState === 'UPCOMING' ? '' : '0');
             let s2 = featured.score2 !== undefined ? featured.score2 : (featuredState === 'UPCOMING' ? '' : '0');
+
+            let scoreOrVsContent = '';
+            if (featuredState === 'UPCOMING') {
+                scoreOrVsContent = `
+                    <div class="vs-box">VS</div>
+                    <div class="match-time-text">${featured.timeDisplay}</div>
+                `;
+            } else {
+                scoreOrVsContent = `
+                    <div class="score-box">${s1} - ${s2}</div>
+                `;
+            }
 
             featuredBox.innerHTML = `
                 ${isLive ? '<div class="live-badge">🔴 LIVE MATCH</div>' : ''}
                 <div class="match-row">
                     <div class="team-box"><div class="team-flag">${getFlag(featured.team1)}</div><div class="team-name">${featured.team1}</div></div>
-                    <div class="score-box">${featuredState === 'UPCOMING' ? '<div class="vs-box">VS</div>' : `${s1} - ${s2}`}</div>
+                    <div class="center-score-box">${scoreOrVsContent}</div>
                     <div class="team-box"><div class="team-flag">${getFlag(featured.team2)}</div><div class="team-name">${featured.team2}</div></div>
                 </div>
-                <div class="match-status">${statusLabel} (${featured.group})</div>
+                <div class="match-status" style="${isLive ? 'color: #ff5252; border-color: #ff5252; background: rgba(255,82,82,0.1);' : ''}">
+                    ${isLive ? 'LIVE NOW' : (featuredState === 'FINISHED' ? 'MATCH FINISHED' : 'UPCOMING MATCH')} (${featured.group})
+                </div>
             `;
 
-            const displayLimitMatches = worldCupMatches.filter(m => m !== featured).slice(0, 3);
+            // ප්‍රධාන බොක්ස් එකේ පෙන්වන තරගය හැර සෙසු සියලුම තරග පහළ ලිස්ට් එකට දැමීම
+            const listMatches = worldCupMatches.filter(m => m !== featured);
 
-            miniList.innerHTML = displayLimitMatches.map(m => {
-                let miniStatus = m.timeDisplay;
-                if (m.isFinished) miniStatus = `🏁 FT (${m.score1}-${m.score2})`;
-                else if (currentTime >= m.matchStartTime && currentTime <= m.matchEndTime) miniStatus = `🔴 LIVE`;
+            miniList.innerHTML = listMatches.map(m => {
+                let miniStatus = ''; 
+                
+                if (m.isFinished) {
+                    // ඉවර වෙච්ච මැච් වලට FT ලේබල් එක සමඟ ප්‍රතිඵලය වැටේ
+                    miniStatus = `🏁 FT (${m.score1}-${m.score2})`;
+                } else if (currentTime >= m.matchStartTime && currentTime <= m.matchEndTime) {
+                    miniStatus = `🔴 LIVE`;
+                } else {
+                    // ඉදිරියට තියෙන මැච් වලට නිවැරදි තරග වෙලාව (SL Time) වැටේ
+                    miniStatus = m.timeDisplay;
+                }
+                
                 return `
                     <div class="mini-match-item">
                         <span>${getFlag(m.team1)} ${m.team1} &nbsp;<span style="color:rgba(255,255,255,0.3); font-style:italic;">vs</span>&nbsp; ${m.team2} ${getFlag(m.team2)}</span>
